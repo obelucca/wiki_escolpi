@@ -2,14 +2,14 @@
 
 require ("../config.php");
 
-$id = 2;
+$id = $_GET['id'];
 
 $sql = "DELETE FROM tb_conhecimento WHERE id = $id;"; 
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
-    echo "Registro deletado com sucesso!";
+    header("Location: ../front/index.php");
   } else {
     echo "Erro ao deletar registro: " . mysqli_error($conn);
-  }
+  };
 

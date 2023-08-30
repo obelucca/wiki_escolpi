@@ -5,7 +5,7 @@ Class BaseCon{
     public string $responsavel;
     public string $titulo;
     public string $descricao;
-    public string $imagem;
+    public ?string $imagem;
 
     
     public function __construct($responsavel, $titulo, $descricao,  $imagem){
