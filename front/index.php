@@ -46,24 +46,22 @@
               
                   
                   if (mysqli_num_rows($result) > 0) {
-                echo "<div>";
-                echo "<h2>Resultados da busca</h2>";
-                echo "<table class='table table-hover'>";
-                echo "<tr>";
-                echo "<th>#</th>";
-                echo "<th>Título</th>";
-                echo "<th>Responsável</th>";
-                echo "<th>Ações</th>";
-                echo "</tr>";
-                echo "</div>";
+                
               
                   while ($row = mysqli_fetch_assoc($result)) {
-                echo "<tr>";
-                echo "<td>".$row['id']."</td>";
-                echo "<td>".$row['titulo']."</td>";
-                echo "<td>".$row['responsavel']."</td>";
-                echo "<td><button class='btn btn-success'><a href='visualiza.php?id=$row[id]' class='link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>Visualizar</a></button><td>";
-                echo "</tr>";
+                
+                
+                    echo "<div class='col-md-4 mb-3 mt-5'>";
+                    echo "<div class='card'>";
+                    echo "<div class='card-body'>";
+                    echo "<h5 class='card-title'>".$row['titulo']."</h5>";
+                    echo "<p class='card-text'>ID: ".$row['id']."</p>";
+                    echo "<p class='card-text'>".$row['responsavel']."</p>";
+                    echo "<button class='btn btn-success'><a href='visualiza.php?id=".$row['id']."' class='link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>Visualizar</a></button>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</div>";
+                
                   }
                   echo "</table>";
                   } else {
