@@ -8,6 +8,14 @@
     <title>Novo registro</title>
 </head>
 <body>
+    <?php
+        session_start();
+
+        if (!isset($_SESSION['usuario_logado'])) {
+            header("Location: ../index.php");
+            exit;
+        }
+    ?>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">Wiki Escolpi Informática</a>

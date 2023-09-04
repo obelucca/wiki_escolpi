@@ -27,7 +27,7 @@ if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
     move_uploaded_file($_FILES['imagem']['tmp_name'], $pasta . $fImagem);
 } else {
     // Lida com o caso em que o upload de imagem falha
-    $fImagem = $_POST['imagem'];
+    $fImagem = $row['imagem'];
 }
 
 $basecon =  new BaseCon($fResponsavel, $fTitulo, $fDescricao, $fImagem);

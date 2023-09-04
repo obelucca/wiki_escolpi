@@ -31,7 +31,12 @@
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
+            session_start();
+            $_SESSION['usuario_logado'] = true;
+            $_SESSION['usuario'] = $user;
             header("Location: front/index.php");
+            exit;
+            
         } else {
             echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
                   <strong>Você não pode acessar</strong>!</strong> Senha ou usuário incorretos
@@ -41,11 +46,13 @@
     }
     ?>
         <div class="container mt-5">
-            <div class="row justify-content-center align-items-cente">
+            <div class="row justify-content-center align-items-center">
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Login - Wiki Escolpi Informática</h5>
+                        <div class="card-body align-self-center">
+                            <div class="" >
+                                <img src="https://static.wixstatic.com/media/e3818c_fb912fe615804cb68c1238de1097b2bf~mv2.png/v1/fill/w_373,h_132,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/l2.png" alt="logo_escolpi_informatica.png">
+                            </div>
                             <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
                                 <div class="form-group mt-5">
                                     <label for="username">Usuário</label>

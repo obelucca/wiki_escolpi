@@ -20,6 +20,15 @@
 
     require('../config.php');
 
+    
+        session_start();
+
+        if (!isset($_SESSION['usuario_logado'])) {
+            header("Location: ../index.php");
+            exit;
+        }
+
+
     $id = $_GET['id'];
         
     $sql = "SELECT * FROM tb_conhecimento WHERE id = $id ";
@@ -46,7 +55,8 @@
             </div>
             <div class="mb-3">
                 <label> Imagem do erro </label>
-                <input type="file" name="imagem" class="form-control" value="<?php echo $row['imagem'] ?>" required>
+    
+                <input type="file" name="imagem" class="form-control" value="<?php echo $row['imagem'] ?>">
             </div>
             <div class="mb-3">
                 <input type="hidden" name="id" value="<?php echo $row['id'] ?>">

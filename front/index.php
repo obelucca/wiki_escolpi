@@ -19,6 +19,8 @@
             <form class="d-flex" role="search" method="get" action="<?=$_SERVER['PHP_SELF']?>">
 
                 <input class="form-control me-2" type="search" name="titulo" placeholder="Titulo" aria-label="Search">
+
+                <input class="form-control me-2" type="search" name="descricao" placeholder="Descrição" aria-label="Search">
             
                 <input class="form-control me-2" type="search" name="responsavel" placeholder="Responsável" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
@@ -34,33 +36,44 @@
               
               <?php
                   require("../config.php");
-              
+
+                  session_start();
+
+                 if (!isset($_SESSION['usuario_logado'])) {
+                     header("Location: ../index.php");
+                     exit;
+                    }    
                   $titulo = isset($_GET['titulo']) ? $_GET['titulo'] : '';
                   $responsavel = isset($_GET['responsavel']) ? $_GET['responsavel'] : '';
+                  $descricao = isset($_GET['descricao']) ? $_GET['descricao'] : '';
 
                   $titulo = strtolower($titulo); 
                   $responsavel = strtolower($responsavel);
               
-                  $sql =  "SELECT * FROM tb_conhecimento WHERE LOWER(titulo) LIKE '%$titulo%' AND LOWER(responsavel) LIKE '%$responsavel%'";
+                  $sql =  "SELECT * FROM tb_conhecimento WHERE LOWER(titulo) LIKE '%$titulo%' AND LOWER(responsavel) LIKE '%$responsavel%' AND LOWER(descricao) LIKE '%$descricao%'";
                   $result = mysqli_query($conn, $sql);
               
                   
                   if (mysqli_num_rows($result) > 0) {
-                
+
+                    print "<table class='table table-hover mt-5 '>";
+                    print "<tr>";
+                    print "<th>ID</td>";
+                    print "<th>Titulo</td>";
+                    print "<th>Responsável</td>";
+                    print "<th>Ações</th>";
+                    print"</tr>";
+                            
               
                   while ($row = mysqli_fetch_assoc($result)) {
-                
-                
-                    echo "<div class='col-md-4 mb-3 mt-5'>";
-                    echo "<div class='card'>";
-                    echo "<div class='card-body'>";
-                    echo "<h5 class='card-title'>".$row['titulo']."</h5>";
-                    echo "<p class='card-text'>ID: ".$row['id']."</p>";
-                    echo "<p class='card-text'>".$row['responsavel']."</p>";
-                    echo "<button class='btn btn-success'><a href='visualiza.php?id=".$row['id']."' class='link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>Visualizar</a></button>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
+
+                    print"<tr>";
+                    print "<td>".$row['id']."</td>";
+                    print "<td>".$row['titulo']."</td>";
+                    print "<td><span class='badge text-bg-primary'>".$row['responsavel']."</span></td>";
+                    print "<td><button class='btn btn-success'><a href='visualiza.php?id=".$row['id']."' class='link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>Visualizar</a></button></td>";
+                    print"<td>";
+                    print"</tr>";
                 
                   }
                   echo "</table>";
