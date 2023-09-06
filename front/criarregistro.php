@@ -19,9 +19,9 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">Wiki Escolpi Informática</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+            <div>
+                <button class='btn btn-success'><a href='index.php' class='link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>Voltar</a></button>
+            </div>
         </div>
     </nav>
     <div class="container">
@@ -34,7 +34,7 @@
                 </div>
                 <div class="mb-3">
                     <label> Responsável </label>
-                        <input type="text" name="responsavel" class="form-control" required>
+                        <input type="text" name="responsavel" class="form-control" value="<?php echo $_SESSION['usuario'];?>" required>
             
                 </div>
                 <div class="mb-3">
@@ -50,6 +50,7 @@
                 </div>
                 <div class="mb-3">
                     <button type="submit" name="submit" class="btn btn-dark">Enviar</button>
+                    <button class='btn btn-danger'><a href='index.php' class='link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>Cancelar</a></button>
                 </div>
             </form>
         </div>

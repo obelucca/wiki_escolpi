@@ -12,11 +12,13 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php">Wiki Escolpi Informática</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
     </div>
+    <div>
+        <button class='btn btn-success'><a href='index.php' class='link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>Voltar</a></button>
+    </div>
+    
     </nav>
+    
 </br>
 </br>
 </br>
@@ -61,6 +63,7 @@
         ?>
        </div>
     </div>
+    
     <footer style='margin-top:15px; background-color:white; color:white'>FOoter</footer>
 </body>
 </html>
