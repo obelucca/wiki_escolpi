@@ -35,28 +35,35 @@
       <div class="row">
               
               <?php
-                  require("../config.php");
+                    
+            require("../config.php");
+            session_start();
 
-                  session_start();
+            if (!isset($_SESSION['usuario_logado'])) {
+                header("Location: ../index.php");
+                exit;
+            }
 
-                 if (!isset($_SESSION['usuario_logado'])) {
-                     header("Location: ../index.php");
-                     exit;
-                    }    
-                  $titulo = isset($_GET['titulo']) ? $_GET['titulo'] : '';
-                  $responsavel = isset($_GET['responsavel']) ? $_GET['responsavel'] : '';
-                  $descricao = isset($_GET['descricao']) ? $_GET['descricao'] : '';
+            $registrosPorPagina = 30; 
+            $paginaAtual = isset($_GET['pagina']) ? $_GET['pagina'] : 1; 
 
-                  $titulo = strtolower($titulo); 
-                  $responsavel = strtolower($responsavel);
-              
-                  $sql =  "SELECT * FROM tb_conhecimento WHERE LOWER(titulo) LIKE '%$titulo%' AND LOWER(responsavel) LIKE '%$responsavel%' AND LOWER(descricao) LIKE '%$descricao%'";
-                  $result = mysqli_query($conn, $sql);
-              
-                  
-                  if (mysqli_num_rows($result) > 0) {
+            $titulo = isset($_GET['titulo']) ? $_GET['titulo'] : '';
+            $responsavel = isset($_GET['responsavel']) ? $_GET['responsavel'] : '';
+            $descricao = isset($_GET['descricao']) ? $_GET['descricao'] : '';
 
-                    print "<table class='table table-hover mt-5 '>";
+            $titulo = strtolower($titulo);
+            $responsavel = strtolower($responsavel);
+            $descricao = strtolower($descricao);
+
+            
+            $offset = ($paginaAtual - 1) * $registrosPorPagina;
+
+            $sql = "SELECT * FROM tb_conhecimento WHERE LOWER(titulo) LIKE '%$titulo%' AND LOWER(responsavel) LIKE '%$responsavel%' AND LOWER(descricao) LIKE '%$descricao%' LIMIT $registrosPorPagina OFFSET $offset";
+            $result = mysqli_query($conn, $sql);
+
+            if (mysqli_num_rows($result) > 0) {
+
+                print "<table class='table table-hover mt-5 '>";
                     print "<tr>";
                     print "<th>ID</td>";
                     print "<th>Titulo</td>";
@@ -77,12 +84,23 @@
                 
                   }
                   echo "</table>";
-                  } else {
-                  echo "<h2>Nenhum resultado encontrado</h2>";
-                  }  
-              ?>
+
+                $totalRegistros = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_conhecimento WHERE LOWER(titulo) LIKE '%$titulo%' AND LOWER(responsavel) LIKE '%$responsavel%' AND LOWER(descricao) LIKE '%$descricao%'"));
+                $totalPaginas = ceil($totalRegistros / $registrosPorPagina);
+
+                echo "<nav aria-label='Page navigation'>";
+                echo "<ul class='pagination text-center'>";
+                for ($i = 1; $i <= $totalPaginas; $i++) {
+                    echo "<li class='page-item " . ($paginaAtual == $i ? 'active' : '') . "'><a class='page-link' href='?pagina=$i&titulo=$titulo&responsavel=$responsavel&descricao=$descricao'>$i</a></li>";
+                }
+                echo "</ul>";
+                echo "</nav>";
+            } else {
+                echo "<h2>Nenhum resultado encontrado</h2>";
+            }
+        ?>
+
       </div>
-</div>
-    
+</div>    
 </body>
 </html>
