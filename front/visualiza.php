@@ -51,7 +51,7 @@
                                 echo"</br>";
                             echo"</div>";
                                 echo"</br>";
-                                echo "<img src='../API/imagens/".$row["imagem"]."' alt='Imagem do conhecimento' style='width: 640px; height: 480px;' class='mx-auto d-block'>";
+                                echo "<img src='../Public/imagens/".$row["imagem"]."' alt='Imagem do conhecimento' style='width: 640px; height: 480px;' class='mx-auto d-block'>";
                                 echo"</br>";
                                 echo "<div style='display: flex; justify-content: space-between; padding-bottom:5px;'>";
                 echo "<a href='atualiza.php?id=$row[id]' class='btn btn-success' style='width: 48%;'>Editar Registro</a>";

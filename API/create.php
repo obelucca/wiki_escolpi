@@ -8,7 +8,7 @@ $fTitulo = $_POST['titulo'];
 $fDescricao = $_POST['descricao'];
 if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
     $fImagem = uniqid() . "-" . $_FILES['imagem']['name'];
-    $pasta = "imagens/";
+    $pasta = "../Public/imagens/";
     move_uploaded_file($_FILES['imagem']['tmp_name'], $pasta . $fImagem);
 } else {
     // Lida com o caso em que o upload de imagem falha

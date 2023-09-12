@@ -23,7 +23,7 @@ $fDescricao = $_POST['descricao'];
 // Definir o nome do arquivo com um identificador único
 if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
     $fImagem = uniqid() . "-" . $_FILES['imagem']['name'];
-    $pasta = "imagens/";
+    $pasta = "../Public/imagens/";
     move_uploaded_file($_FILES['imagem']['tmp_name'], $pasta . $fImagem);
 } else {
     // Lida com o caso em que o upload de imagem falha

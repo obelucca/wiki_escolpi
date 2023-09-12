@@ -22,7 +22,7 @@
 
 <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        require('./API/login/config_db_login.php');
+        require('./config.php');
 
         $user = isset($_POST['usuario']) ? $_POST['usuario'] : '';
         $senha = isset($_POST['senha']) ? $_POST['senha'] : '';
