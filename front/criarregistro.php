@@ -39,9 +39,9 @@
                 </div>
                 <div class="mb-3">
                     <label> Descrição do erro </label>
-                        <input type="text" name="descricao"
-                        class="form-control" required>
-            
+                    <class="input-group" name="descricao">
+                    <textarea class="form-control" aria-label="With textarea" name='descricao'></textarea>
+
                 </div>
                 <div class="mb-3">
                     <label> Imagem do erro

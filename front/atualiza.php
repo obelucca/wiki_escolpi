@@ -54,9 +54,12 @@
                 <input type="text" name="responsavel" class="form-control" value="<?php echo $row['responsavel'] ?>" required>
             </div>
             <div class="mb-3">
-                <label> Descrição do erro </label>
-                <input type="text" name="descricao" value="<?php echo $row['descricao'] ?>" class="form-control" required>
-            </div>
+                    <label> Descrição do erro </label>
+                    <class="input-group" name="descricao">
+                    <textarea class="form-control" aria-label="With textarea" name='descricao' value="<?php echo $row['descricao'] ?>" > <?php echo $row['descricao'] ?> </textarea>
+
+                </div>
+                
             <div class="mb-3">
                 <label> Imagem do erro </label>
     
