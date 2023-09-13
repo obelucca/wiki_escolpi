@@ -38,8 +38,14 @@ Esse projeto ainda está em desenvolvimento, e as demandas dele vem de acordo co
  Envio de imagens para o banco de dados: 
  Por meio de pesquisas soube que enviar imagens para o banco de dados não era uma boa prática, então optei por enviar as imagens para uma pasta "PUBLIC", e apenas passar o caminho delas para o banco de dados
 
- ### 2° desafio:
+ ### 2° Desafio:
 
  Esquema de paginação de dados:
 
- Percebi que com o passar do tempo a quantidade de dados registrados no banco de dados poderia comprometer o funcionamento da wiki, por isso inclui o esquema de paginação dentro do codigo, o que limita uma quantidade de registro por página
+ Percebi que com o passar do tempo a quantidade de dados registrados no banco de dados poderia comprometer o funcionamento da wiki, por isso inclui o esquema de paginação dentro do codigo, o que limita uma quantidade de registros por página. 
+
+ ### 3° Desafio 
+
+ Arquitetura:
+
+ Ness Projeto pensei em adotar a arquitetura MVC (Model, View, Controller), porém, ainda não estou utilizando uma controler para fazer as funções do CRUD, ainda estou tendo dúvida de como atualizar o projeto para que seja realmente um MVC completo.
