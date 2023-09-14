@@ -18,13 +18,13 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02"> 
             <form class="d-flex" role="search" method="get" action="<?=$_SERVER['PHP_SELF']?>">
 
-                <input class="form-control me-2" type="search" name="titulo" placeholder="Titulo" aria-label="Search">
+                <input class="form-control me-1" type="search" name="titulo" placeholder="Titulo" aria-label="Search">
 
-                <input class="form-control me-2" type="search" name="descricao" placeholder="Descrição" aria-label="Search">
+                <input class="form-control me-1" type="search" name="descricao" placeholder="Descrição" aria-label="Search">
                 
-                <input class="form-control me-2" type="search" name="grupo" placeholder="Grupo" aria-label="Search">
+                <input class="form-control me-1" type="search" name="grupo" placeholder="Grupo" aria-label="Search">
             
-                <input class="form-control me-2" type="search" name="responsavel" placeholder="Responsável" aria-label="Search">
+                <input class="form-control me-1" type="search" name="responsavel" placeholder="Responsável" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
@@ -69,7 +69,7 @@
             }
 
             $sql .= "LIMIT $registrosPorPagina OFFSET $offset";
-            
+
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) > 0) {

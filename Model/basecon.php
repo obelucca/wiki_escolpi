@@ -3,7 +3,6 @@ require "../config.php";
 
 Class BaseCon{
     public string $responsavel;
-
     public string $grupo;
     public string $titulo;
     public string $descricao;
