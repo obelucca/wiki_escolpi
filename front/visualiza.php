@@ -47,6 +47,8 @@
                                 echo"</br>";
                                 echo "<h3 class='card-title'>" . $row["responsavel"] . "</h3>";
                                 echo"</br>";
+                                echo"<td><span class='badge text-bg-warning'>". $row['grupo']."</span></td>";
+                                echo "</br>";
                                 echo "<p class='card-text'>" . $row["descricao"] . "</p>";
                                 echo"</br>";
                             echo"</div>";

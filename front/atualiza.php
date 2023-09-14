@@ -53,12 +53,20 @@
                 <label> Responsável </label>
                 <input type="text" name="responsavel" class="form-control" value="<?php echo $row['responsavel'] ?>" required>
             </div>
+            <div class="form-floating">
+                    <select class="form-select" name="grupo" id="floatingSelect" aria-label="Floating label select example">
+                        <option selected>Grupo</option>
+                        <option value="ERROS">ERROS</option>
+                        <option value="PROCESSOS">PROCESSOS</option>
+                    </select>
+                    <label for="floatingSelect">Selecione o grupo</label>
+                </div>
             <div class="mb-3">
                     <label> Descrição do erro </label>
                     <class="input-group" name="descricao">
                     <textarea class="form-control" aria-label="With textarea" name='descricao' value="<?php echo $row['descricao'] ?>" > <?php echo $row['descricao'] ?> </textarea>
 
-                </div>
+            </div>
                 
             <div class="mb-3">
                 <label> Imagem do erro </label>

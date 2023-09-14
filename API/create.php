@@ -6,6 +6,7 @@ require ("../config.php");
 $fResponsavel = $_POST['responsavel'];
 $fTitulo = $_POST['titulo'];
 $fDescricao = $_POST['descricao'];
+$fGrupo = $_POST['grupo'];
 if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
     $fImagem = uniqid() . "-" . $_FILES['imagem']['name'];
     $pasta = "../Public/imagens/";
@@ -15,12 +16,12 @@ if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
     $fImagem = $_POST['imagem'];
 }
 
-$basecon =  new BaseCon($fResponsavel, $fTitulo, $fDescricao, $fImagem);
+$basecon =  new BaseCon($fResponsavel, $fTitulo, $fDescricao, $fImagem, $fGrupo);
 
-$sql = "INSERT INTO tb_conhecimento (responsavel, titulo, descricao, imagem) VALUES (?, ?, ?, ?)";
+$sql = "INSERT INTO tb_conhecimento (responsavel, titulo, descricao, imagem, grupo) VALUES (?, ?, ?, ?, ?)";
 
 $stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, "ssss", $basecon->getResponsavel(), $basecon->getTitulo(), $basecon->getDescricao(), $fImagem);
+mysqli_stmt_bind_param($stmt, "sssss", $basecon->getResponsavel(), $basecon->getTitulo(), $basecon->getDescricao(), $fImagem, $basecon->getGrupo());
 $result = mysqli_stmt_execute($stmt);
 
 if ($result) {

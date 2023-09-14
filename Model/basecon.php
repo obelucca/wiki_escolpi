@@ -3,16 +3,19 @@ require "../config.php";
 
 Class BaseCon{
     public string $responsavel;
+
+    public string $grupo;
     public string $titulo;
     public string $descricao;
     public ?string $imagem;
 
     
-    public function __construct($responsavel, $titulo, $descricao,  $imagem){
+    public function __construct($responsavel, $titulo, $descricao,  $imagem, $grupo){
         $this->responsavel = $responsavel;
         $this->titulo = $titulo;
         $this->descricao = $descricao;
         $this->imagem =  $imagem;
+        $this->grupo = $grupo;
     }
 
     public function getResponsavel() {
@@ -29,6 +32,13 @@ Class BaseCon{
 
       public function setTitulo($titulo){
         $this->titulo = $titulo;
+      }
+      public function getGrupo() {
+        return $this->grupo;
+      }
+
+      public function setGrupo($grupo){
+        $this->titulo = $grupo;
       }
 
       public function getDescricao(){

@@ -20,6 +20,13 @@ $row = mysqli_fetch_assoc($result);
 $fResponsavel =  $_POST['responsavel'];
 $fTitulo = $_POST['titulo'];
 $fDescricao = $_POST['descricao'];
+ 
+if(isset($_POST['grupo'])){
+    $fGrupo = $_POST['grupo'];
+} else {
+    $fGrupo = $row['grupo'];
+}
+
 // Definir o nome do arquivo com um identificador único
 if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
     $fImagem = uniqid() . "-" . $_FILES['imagem']['name'];
@@ -30,11 +37,11 @@ if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
     $fImagem = $row['imagem'];
 }
 
-$basecon =  new BaseCon($fResponsavel, $fTitulo, $fDescricao, $fImagem);
+$basecon =  new BaseCon($fResponsavel, $fTitulo, $fDescricao, $fImagem, $fGrupo);
 
-$sql = "UPDATE tb_conhecimento SET responsavel = ?, titulo = ?, descricao = ?, imagem = ? WHERE id = ?";
+$sql = "UPDATE tb_conhecimento SET responsavel = ?, titulo = ?, descricao = ?, imagem = ?, grupo = ? WHERE id = ?";
 $stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, "ssssi", $basecon->getResponsavel(), $basecon->getTitulo(), $basecon->getDescricao(), $basecon->getImagem(), $id);
+mysqli_stmt_bind_param($stmt, "sssssi", $basecon->getResponsavel(), $basecon->getTitulo(), $basecon->getDescricao(),$basecon->getImagem(), $basecon->getGrupo(), $id);
 $result = mysqli_stmt_execute($stmt);
 
 if ($result) {

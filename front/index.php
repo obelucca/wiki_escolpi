@@ -21,6 +21,8 @@
                 <input class="form-control me-2" type="search" name="titulo" placeholder="Titulo" aria-label="Search">
 
                 <input class="form-control me-2" type="search" name="descricao" placeholder="Descrição" aria-label="Search">
+                
+                <input class="form-control me-2" type="search" name="grupo" placeholder="Grupo" aria-label="Search">
             
                 <input class="form-control me-2" type="search" name="responsavel" placeholder="Responsável" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
@@ -50,6 +52,8 @@
             $titulo = isset($_GET['titulo']) ? $_GET['titulo'] : '';
             $responsavel = isset($_GET['responsavel']) ? $_GET['responsavel'] : '';
             $descricao = isset($_GET['descricao']) ? $_GET['descricao'] : '';
+            $grupo = isset($_GET['grupo']) ? $_GET['grupo'] : '';
+
 
             $titulo = strtolower($titulo);
             $responsavel = strtolower($responsavel);
@@ -58,7 +62,14 @@
             
             $offset = ($paginaAtual - 1) * $registrosPorPagina;
 
-            $sql = "SELECT * FROM tb_conhecimento WHERE LOWER(titulo) LIKE '%$titulo%' AND LOWER(responsavel) LIKE '%$responsavel%' AND LOWER(descricao) LIKE '%$descricao%' LIMIT $registrosPorPagina OFFSET $offset";
+            $sql = "SELECT * FROM tb_conhecimento WHERE LOWER(titulo) LIKE '%$titulo%' AND LOWER(responsavel) LIKE '%$responsavel%' AND LOWER(descricao) LIKE '%$descricao%'";
+            
+            if (!empty($grupo)) {
+                $sql .= " AND LOWER(grupo) LIKE '%$grupo%'";
+            }
+
+            $sql .= "LIMIT $registrosPorPagina OFFSET $offset";
+            
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) > 0) {
@@ -68,6 +79,7 @@
                     print "<th>ID</td>";
                     print "<th>Titulo</td>";
                     print "<th>Responsável</td>";
+                    print "<th>Grupo</td>";
                     print "<th>Ações</th>";
                     print"</tr>";
                             
@@ -78,6 +90,7 @@
                     print "<td>".$row['id']."</td>";
                     print "<td>".$row['titulo']."</td>";
                     print "<td><span class='badge text-bg-primary'>".$row['responsavel']."</span></td>";
+                    print "<td><span class='badge text-bg-warning'>". $row['grupo']."</span></td>";
                     print "<td><button class='btn btn-success'><a href='visualiza.php?id=".$row['id']."' class='link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>Visualizar</a></button></td>";
                     print"<td>";
                     print"</tr>";
