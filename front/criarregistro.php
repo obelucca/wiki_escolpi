@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-floating">
                     <select class="form-select" name="grupo" id="floatingSelect" aria-label="Floating label select example">
-                        <option selected>Grupo</option>
+                        <option selected></option>
                         <option value="ERROS">ERROS</option>
                         <option value="PROCESSOS">PROCESSOS</option>
                     </select>

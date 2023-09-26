@@ -5,7 +5,7 @@ require ("../config.php");
 
 $fResponsavel = $_POST['responsavel'];
 $fTitulo = $_POST['titulo'];
-$fDescricao = $_POST['descricao'];
+$fDescricao = nl2br($_POST['descricao']);
 $fGrupo = $_POST['grupo'];
 if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
     $fImagem = uniqid() . "-" . $_FILES['imagem']['name'];

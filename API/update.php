@@ -19,7 +19,7 @@ $row = mysqli_fetch_assoc($result);
 
 $fResponsavel =  $_POST['responsavel'];
 $fTitulo = $_POST['titulo'];
-$fDescricao = $_POST['descricao'];
+$fDescricao = nl2br($_POST['descricao']);
  
 if(isset($_POST['grupo'])){
     $fGrupo = $_POST['grupo'];

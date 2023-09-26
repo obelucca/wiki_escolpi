@@ -48,4 +48,4 @@ Esse projeto ainda está em desenvolvimento, e as demandas dele vem de acordo co
 
  Arquitetura:
 
- Ness Projeto pensei em adotar a arquitetura MVC (Model, View, Controller), porém, ainda não estou utilizando uma controler para fazer as funções do CRUD, ainda estou tendo dúvida de como atualizar o projeto para que seja realmente um MVC completo.
+ Nesse Projeto pensei em adotar a arquitetura MVC (Model, View, Controller), porém, ainda não estou utilizando uma controler para fazer as funções do CRUD, ainda estou tendo dúvida de como atualizar o projeto para que seja realmente um MVC completo.
